@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MobileApp</string>
+    <string name="str_motywWyswietlaniaU">Display mode:</string>
+    <string name="str_kolorPrzyciskowU">Button color:</string>
+    <string name="str_jezykU">Language:</string>
+    <string name="str_powrot">Return</string>
+    <string name="str_tak">Yes</string>
+    <string name="str_nie">No</string>
+    <string name="str_potwierdzenieOperacjiTytul">Confirmation</string>
+    <string name="str_czyNaPewnoWylogowacSie">Are you sure you want to log out?</string>
+    <string name="str_motywJasny">Light mode</string>
+    <string name="str_motywCiemny">Dark mode</string>
+    <string name="str_Polski">Polish (pl)</string>
+    <string name="str_Angielski">English (en)</string>
+    <string name="str_ustawienia">Settings</string>
+    <string name="str_logIn">Log in</string>
+    <string name="str_zapomnialemHasla">Forgot password</string>
+    <string name="str_login">Login</string>
+    <string name="str_haslo">Password</string>
+    <string name="str_niepoprawneDaneLogowania">Incorrect login or password! Try again.</string>
+    <string name="str_zarejestrujSie">Register</string>
+    <string name="str_mojeKamery">My cameras</string>
+    <string name="str_wylogujSie">Log out</string>
+    <string name="str_przeslijEmail">Send e-mail message</string>
+    <string name="str_emailPrzeslany">E-mail message has been sent! Please make sure that the message isn\'t in spam folder before sending a request again.</string>
+    <string name="str_niepoprawnyEmail">Incorrect e-mail adress! Please try different adress.</string>
+    <string name="str_powtorzHaslo">Repeat password</string>
+    <string name="str_utworzKonto">Create account</string>
+    <string name="str_pokazNaMapie">Show on the map</string>
+    <string name="str_liczbaWolnychMiejsc">Number of available parking slots:</string>
+</resources>
