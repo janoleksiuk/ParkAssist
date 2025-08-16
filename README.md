@@ -14,11 +14,7 @@ This project is a prototype portable parking spot recognition system built on a 
 
 <img width="1301" height="724" alt="Zrzut ekranu 2025-08-16 131446" src="https://github.com/user-attachments/assets/78710b8d-fde0-42a9-88b2-6fc9337f8ef1" />
 
-
 ---
-
-
-
 
 **Key Features:**
 - Low-cost hardware setup with **Raspberry Pi** and a webcam
@@ -43,6 +39,7 @@ Suited for deployment on **Rasberry Pi** microcomputer. It is implemented within
 To achieve integration with ThingSpeak cloud communication replace following lines with your input within both programs:
 ```python
 API_KEY = "XXXXX"
+FIELD_NUMBER = X
 ```
 
 To achieve **plug-and-play** functionality of the device input those commands on the Rpi:
@@ -51,116 +48,76 @@ crontab -e
 @reboot sleep 15 && /usr/bin/python3 /path/to/detect_places_DEMO.py
 ```
 
+
 ---
 
 ### Mobile application
 
+Device GUI implemented as the **Android Studio** project, deployable in the Android machine emulator. Created with cooperation of user Tuniekk.
 
-### Hardware
-- Standard USB camera (webcam)
-- Computer with sufficient processing power for real-time video processing
+#### How to Run on Emulator
 
-### Software
-- Python 3.7+
-- OpenCV 
-- NumPy
-- dlib
-- Windows OS (for `winsound` module)
-(see requirements.txt)
+1. **Open the Project**
+   - Launch **Android Studio**.
+   - Click **File > Open** and select the `Mobile-app` project folder.
 
-### Models
-- dlib's 68-point facial landmark predictor model (`shape_predictor_68_face_landmarks.dat`)
+2. **Sync Gradle**
+   - Allow Android Studio to sync Gradle and download dependencies automatically.
 
-## Installation
+3. **Set Up an Emulator**
+   - Go to **Tools > Device Manager**.
+   - Create a new Virtual Device (e.g., Pixel 6).
+   - Select a system image (preferably the latest stable version, e.g., Android 14).
+   - Finish setup.
 
-1. **Clone the repository:**
-```bash
-git clone https://github.com/your-repo/eye-gaze-exoskeleton
-cd eye-assist
+4. **Build and Run**
+   - In the top toolbar, select your emulator from the device dropdown menu.
+   - Click the **Run** button (or press **Shift + F10**).
+   - Android Studio will build the project and launch it on the emulator.
+
+#### Troubleshooting
+- If the emulator is slow, enable **hardware acceleration** (Intel HAXM or Hypervisor Framework on macOS).
+- Ensure that your machine supports virtualization and it is enabled in BIOS/UEFI.
+- If Gradle sync fails, check your internet connection or update Gradle/SDK from **File > Project Structure**.
+  
+To achieve integration with ThingSpeak cloud communication replace following lines with your input `Mobile-app/app/src/main/java/com/example/mobileapp/ThingSpeakReader.java`:
+```java
+ private static final String READ_API_KEY = "X";
+ private static final String CHANNEL_ID = "X";
+ private static final String FIELD_NUMBER = "X";
 ```
 
-2. **Install required packages:**
-```bash
-pip install opencv-python numpy dlib
-```
+Example snapshots (deployed on **Pixel 8** emulator):
 
-3. **Download the dlib model:**
-   - Download `shape_predictor_68_face_landmarks.dat` from dlib's official repository
-   - Place it in the `model/` directory
 
-4. **Create necessary directories:**
-```bash
-mkdir -p utils model logs config
-```
+<img width="640" height="700" alt="473165910_1158533172581844_3396641954276590126_n" src="https://github.com/user-attachments/assets/e77c40c7-01d8-4707-b05f-3a4b8e78c5b1" />
 
-5. **Add calibration images:**
-   - Place GUI images (`gui1.png`, `gui2.png`, `gui3.png`) in `utils/`
-   - Place calibration images (`centerline.png`, `pre1.png`, `1.png`, etc.) in `utils/`
+<img width="640" height="700" alt="472785679_1007211271219119_9188851167837751633_n" src="https://github.com/user-attachments/assets/f94a86f6-4259-4b97-bdf2-77540da9ebde" />
 
-## Usage
 
-### 1. Run the Complete System
-```bash
-python main.py
-```
-This will first run the calibration process, then start the main eye-tracking application.
+---
 
-### 2. Calibration Process
-The system guides users through a 5-point calibration:
-- **Centerline alignment**
-- **Left-up gaze point**
-- **Right-up gaze point** 
-- **Right-down gaze point**
-- **Left-down gaze point**
-- **Mouth calibration** (for blink threshold)
+### Casing
 
-Press `ESC` to advance through calibration stages.
+From `Mechanical-design` download `case.stl` and `cover.stl` files. Those are STL models which you can print (feel free to ask for **PRUSA3D** .gcode files). Then assembly accordingly to the picture below, where:
+1. `case.stl` part
+2. `cover.stl` part
+3. M3x10 DIN 912 botls x4
+4. Rasberry Pi 5
+5. Creative live cam sync 1080p v2
 
-### 3. Control Interface
-The system provides three GUI modes:
+<img width="764" height="475" alt="Zrzut ekranu 2025-08-16 213652" src="https://github.com/user-attachments/assets/1c79e738-eaeb-4feb-a487-65fb4538debe" />
 
-#### GUI 1 - Angle Control
-- **Top-Left**: Increase current angle position
-- **Top-Right**: Decrease current angle position  
-- **Bottom-Center**: Switch between angles (1, 2, 3)
-- **Bottom-Left**: Switch to GUI 2
-- **Bottom-Right**: Stop movement
+Real-world assembly:
 
-#### GUI 2 - Velocity Control
-- **Top-Left**: Increase velocity (10% increments)
-- **Top-Right**: Decrease velocity (10% decrements)
-- **Bottom-Left**: Switch to GUI 1
-- **Bottom-Center**: Switch to GUI 3
-- **Bottom-Right**: Stop movement
+<img width="764" height="764" alt="Zrzut ekranu 2025-08-16 214433" src="https://github.com/user-attachments/assets/93a364b2-f6ae-419b-99d1-3417d2ef1feb" />
 
-#### GUI 3 - Additional Functions
-- **Bottom-Left**: Return to GUI 1
-- **Bottom-Right**: Stop movement
+---
 
-### 4. Interaction Method
-- **Single Blink**: Highlight button (red border)
-- **Double Blink**: Execute action (green border)
-- **Gaze Direction**: Navigate between buttons
+## Requirements
 
-## Project Structure
-
-```
-eye-gaze-exoskeleton/
-├── main.py      # Main application entry point
-├── eye_detection.py         # Eye detection and gaze tracking
-├── calibration.py          # Calibration system
-├── gui_controller.py       # GUI management and interactions
-├── model/
-│   └── shape_predictor_68_face_landmarks.dat
-├── utils/
-│   ├── gui1.png           # GUI interface images
-│   ├── gui2.png
-│   ├── gui3.png
-|   ├── utils.py               # Utility classes and functions
-│   ├── centerline.png     # Calibration images
-│   ├── pre1.png - pre5.png
-│   ├── 1.png - 5.png
-│   └── geo_calib.txt      # Calibration data (generated)
-```
-
-**Note**: This system is intended for research and rehabilitation purposes. Always ensure proper supervision and safety protocols when used with actual exoskeleton hardware.
+- Standard USB camera (recommended **Creative live cam sync 1080p v2** for suiting in cover part)
+- **Rasberry Pi** microcomputer (recommended Rpi 5)
+- **Android Studio**
+- ThingSpeak channel
+- 3D printer (optional)
