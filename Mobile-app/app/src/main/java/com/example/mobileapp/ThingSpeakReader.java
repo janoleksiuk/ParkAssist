@@ -14,7 +14,7 @@ import org.json.JSONObject;
 
 public class ThingSpeakReader {
 
-    // Informacje potrzebne do odczytu liczby miejsc z ThingSpeak
+    // Info for ThingSpeak
     // enter your values here
     private static final String READ_API_KEY = "X";
     private static final String CHANNEL_ID = "X";

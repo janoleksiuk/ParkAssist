@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
             String sLogin = editViewLogin.getText().toString().trim();
             String sHaslo = editViewHaslo.getText().toString().trim();
 
-            if (!sLogin.equals("Tuniek") || !sHaslo.equals("cosiek")){
+            if (!sLogin.equals("JO") || !sHaslo.equals("1234")){
                 textViewKomunikat.setText(R.string.str_niepoprawneDaneLogowania);
             }
             else {

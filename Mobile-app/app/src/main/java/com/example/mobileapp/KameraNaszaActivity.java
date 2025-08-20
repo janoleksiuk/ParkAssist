@@ -20,7 +20,7 @@ import java.util.Arrays;
 
 public class KameraNaszaActivity extends AppCompatActivity {
     ThingSpeakReader thingSpeakReader = new ThingSpeakReader();
-    String obecnaIloscMiejsc = "brak";
+    String obecnaIloscMiejsc = "None";
     TextView textViewIloscMiejsc;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
