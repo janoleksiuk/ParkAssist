@@ -1,6 +1,6 @@
 # ParkAssist
 
-IoT device to help drivers save their time spent on searching for free parking places. 
+**IoT device to help drivers save their time spent on searching for free parking places.** 
 
 ---
 
