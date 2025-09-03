@@ -25,7 +25,7 @@ This project is a prototype portable parking spot recognition system built on a 
 - 3D-printed enclosure and mount for a portable prototype
 
 ---
-## Usecase
+## Use case
 
 The final outcome revolves around a primitive yet efficient and simple approach. Firstly, the end user places the device in a spot where the camera covers the desired parking area. The system is designed with a plug-and-play concept, so the user only needs to connect the device (here, the RPi controller) to a power supply. Then, using the mobile app prototype, they can see the number of cars detected by the device within that frame. Knowing the covered area, they can remotely determine whether the space is mostly occupied by cars and decide to change their parking destination, instead of checking in person and losing time.
 
